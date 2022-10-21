@@ -1,5 +1,6 @@
 import getUserInfo from "./lib/getUserInfo";
 import getUserDms from "./lib/getUserDms";
+import getChannelInfo from "./lib/getChannelInfo";
 
 const loginButton = document.getElementById("submit-token");
 let infoText = document.getElementById("info-text");
@@ -13,7 +14,12 @@ loginButton.addEventListener("click", async () => {
             let sorted = info.sort((a, b) => {
                 return b.last_message_id - a.last_message_id;
             });
-            console.log(sorted);
+            sorted.slice(0, 10).forEach((channel) => {
+                getChannelInfo(token, channel.id).then((res) => {
+                    let channel = res;
+                    console.log(channel);
+                });
+            });
         }).catch((err) => {
             console.log(err);
         });
