@@ -28,5 +28,4 @@ loginButton.addEventListener("click", async () => {
         infoText.style.color = "red";
     });
 });
-
-
+//nuro is sus
