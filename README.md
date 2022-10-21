@@ -1,7 +1,7 @@
 # discordClient
 An open source Discord clone
 
-##TODO:
+## TODO:
 
 - add dms list on login
 - make dms clickable
