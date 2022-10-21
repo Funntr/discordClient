@@ -1,6 +1,5 @@
 import getUserInfo from "./lib/api/users/UserInfo.js";
 import getUserDms from "./lib/api/@me/directMessages";
-import getChannelInfo from "./lib/api/channels/ChannelInfo";
 
 import mainBoardHml from "./lib/html/main-board.html";
 
@@ -15,8 +14,7 @@ loginButton.addEventListener("click", async () => {
     getUserInfo(token).then((res) => {
         infoText.innerText = `Logged in as ${res.data.username}#${res.data.discriminator}`;
         getUserDms(token).then((res) => {
-            let info = res;
-            let sorted = info.sort((a, b) => {
+            res.sort((a, b) => {
                 return b.last_message_id - a.last_message_id;
             });
             mainBoard.innerHTML = mainBoardHml;
