@@ -1,4 +1,4 @@
-module.exports = function (token) {
+module.exports = function getUserInfo (token) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.open("GET", "https://discord.com/api/v9/users/@me", true);
