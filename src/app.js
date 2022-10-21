@@ -1,9 +1,14 @@
-import getUserInfo from "./lib/getUserInfo";
-import getUserDms from "./lib/getUserDms";
-import getChannelInfo from "./lib/getChannelInfo";
+import getUserInfo from "./lib/api/users/UserInfo.js";
+import getUserDms from "./lib/api/@me/directMessages";
+import getChannelInfo from "./lib/api/channels/ChannelInfo";
+
+import mainBoardHml from "./lib/html/main-board.html";
 
 const loginButton = document.getElementById("submit-token");
+
 let infoText = document.getElementById("info-text");
+let mainBoard = document.getElementById("main-board");
+let loginBoard = document.getElementById("login-board");
 
 loginButton.addEventListener("click", async () => {
     const token = document.getElementById("token").value;
@@ -14,12 +19,9 @@ loginButton.addEventListener("click", async () => {
             let sorted = info.sort((a, b) => {
                 return b.last_message_id - a.last_message_id;
             });
-            sorted.slice(0, 10).forEach((channel) => {
-                getChannelInfo(token, channel.id).then((res) => {
-                    let channel = res;
-                    console.log(channel);
-                });
-            });
+            mainBoard.innerHTML = mainBoardHml;
+            mainBoard.style.display = "block";
+            loginBoard.style.display = "none";
         }).catch((err) => {
             console.log(err);
         });
