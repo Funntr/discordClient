@@ -10,3 +10,6 @@ An open source Discord clone
 - make servers clickable and open the server
 - list all channels and make them able to click
 - send and receive messages
+- add activity (playing status etc)
+- settings and other stuff
+- possibly plugin or style loader
